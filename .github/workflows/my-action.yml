@@ -8,16 +8,17 @@ jobs:
         steps:
           - run: echo "hello github actions!"
 
-    needs: [say-hello]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out this repo
-        uses: actions/checkout@v3
+    build-and-test:
+        needs: [say-hello]
+        runs-on: ubuntu-latest
+        steps:
+          - name: Check out this repo
+            uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: sudo apt install -y build-essential pyhton3
+          - name: Install dependencies
+            run: sudo apt install -y build-essential pyhton3
 
-      - run: pwd
+          - run: pwd
 
-      - name: Run Test
-        run: pyhton3 test.py 
+          - name: Run Test
+            run: pyhton3 test.py 
